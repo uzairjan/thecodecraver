@@ -1,27 +1,23 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import './App.css';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Recents from "./components/Recents";
-import Featured from './components/Featured';
-import Mostvisited from './components/Mostvisited';
 
+
+import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from './components/Home';
+import Blog from './components/Blog';
 
 
 
 
 function App() {
   return (
-    <div>
-     <Header />
-     <Recents />
-    {/* start of section */}
-    	<Featured />
-      <Mostvisited />
-    {/* end of section */}
-     <Footer />
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path='/' component={Home} />
+        <Route exact path='/blog' component={Blog}></Route>
+      </Switch>
+    </Router>
   );
 }
 

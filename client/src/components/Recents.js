@@ -1,12 +1,14 @@
 import React from 'react';
 
+import Blog from './Blog';
+
 import post1 from './../img/post-1.jpg';
 import post2 from './../img/post-2.jpg';
 import post3 from './../img/post-3.jpg';
 import post4 from './../img/post-4.jpg';
 import post5 from './../img/post-5.jpg';
 import post6 from './../img/post-6.jpg';
-
+import {Link} from 'react-router-dom';
 import widget1 from './../img/widget-1.jpg';
 import widget2 from './../img/widget-2.jpg';
 import widget3 from './../img/widget-3.jpg';
@@ -21,13 +23,17 @@ class Recents extends React.Component {
 				<div className="row">	
 					<div className="col-md-6">
 						<div className="post post-thumb">
+							{/* <Link to={Blog}></Link> */}
 							<a className="post-img" href="blog-post.html"><img src={post1} alt="" /></a>
 							<div className="post-body">
 								<div className="post-meta">
 									<a className="post-category cat-2" href="category.html">JavaScript</a>
 									<span className="post-date">March 27, 2018</span>
 								</div>
-								<h3 className="post-title"><a href="blog-post.html">Chrome Extension Protects Against JavaScript-Based CPU Side-Channel Attacks</a></h3>
+								<h3 className="post-title">
+									<Link to="/blog">Chrome Extension Protects Against JavaScript-Based CPU Side-Channel Attacks</Link>
+									<a href="blog-post.html"></a>
+									</h3>
 							</div>
 						</div>
 					</div>
