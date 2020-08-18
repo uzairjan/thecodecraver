@@ -1,19 +1,12 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
+ mongoose.connect("mongodb://localhost/blog", {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+  useUnifiedTopology: true,
+});
 
-const db = async () => {
-    try {
-        const conn = await mongoose.connect("mongodb://localhost/blog",{
-            useNewUrlParser: true,
-            useCreateIndex: true,
-            useFindAndModify: false,
-            useUnifiedTopology: true
-        });
-        console.log(`mongodb connected: ${conn.connection.host}`)
-    } catch (error) {
-        console.error(error);
-        process.exit(1);
-    }
+module.exports = {
+  Articles: require("../model/schema/Article"),
 };
-
-module.exports = db;    

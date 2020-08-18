@@ -18,7 +18,8 @@ class Recents extends React.Component {
     render(){
         return(
             <React.Fragment>
-                 <div className="section">
+        <div className="section">
+			{/* Page Top most visited new articles in less time */}
 			<div className="container">
 				<div className="row">	
 					<div className="col-md-6">
@@ -51,7 +52,7 @@ class Recents extends React.Component {
 						</div>
 					</div>
 				</div>
-
+			{/*  */}
 				<div className="row">
 					<div className="col-md-12">
 						<div className="section-title">
