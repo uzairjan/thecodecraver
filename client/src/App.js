@@ -3,21 +3,30 @@ import React from "react";
 import "./App.css";
 import { Provider } from "react-redux";
 import PropTypes from "prop-types";
+import { createStore } from 'redux';
+import {getArticle} from './actions/index';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Articles from "./components/Articles";
 import Blog from "./components/Blog";
+import rootReducer from './reducers/index';
+
+const store = createStore(rootReducer);
+console.log('store.getState: ', store.getState());
+
+store.subscribe(() => console.log('store',store.getState()));
+
+store.dispatch(getArticle());
+
 
 function App() {
   return (
-    <Provider>
       <Router>
         <Switch>
           <Route exact path="/" component={Articles} />
           <Route exact path="/blog" component={Blog}></Route>
         </Switch>
       </Router>
-    </Provider>
   );
 }
 
