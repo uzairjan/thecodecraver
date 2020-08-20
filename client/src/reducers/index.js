@@ -1,12 +1,18 @@
-import {GET_ARTICLE} from './../actions/types';
+import { GET_ARTICLE, GET_ARTICLES } from './../actions/types';
 
+const initialState = {}
 
-export default function(state ='', action){
+export default function(state = initialState, action) {
     switch (action.type) {
         case GET_ARTICLE:
-                let data = {uzair: "hello world"};
-            return  data;
+            let data = { uzair: "hello world" };
+            return data;
+        case GET_ARTICLES:
+              return  action.payload
+          
         default:
-          return state;
-      }
+            return state;
+    }
 }
+
+// export default function(state)

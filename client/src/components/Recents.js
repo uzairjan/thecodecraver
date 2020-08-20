@@ -8,15 +8,27 @@ import post3 from './../img/post-3.jpg';
 import post4 from './../img/post-4.jpg';
 import post5 from './../img/post-5.jpg';
 import post6 from './../img/post-6.jpg';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import widget1 from './../img/widget-1.jpg';
 import widget2 from './../img/widget-2.jpg';
 import widget3 from './../img/widget-3.jpg';
 import widget4 from './../img/widget-4.jpg';
 
+import { connect } from 'react-redux';
+import { articles } from './../actions/index';
+
 class Recents extends React.Component {
-    render(){
-        return(
+
+    componentDidMount() {
+        const { articles } = this.props;
+        articles();
+    }
+
+    render() {
+        const { data } = this.props.article;
+        console.log("my data",data);
+        if(!data) return <div>Loading....</div>
+        return (
             <React.Fragment>
         <div className="section">
 			{/* Page Top most visited new articles in less time */}
@@ -59,45 +71,24 @@ class Recents extends React.Component {
 							<h2>Recent Posts</h2>
 						</div>
 					</div>
-
-					<div className="col-md-4">
-						<div className="post">
-							<a className="post-img" href="blog-post.html"><img src={post3} alt="" /></a>
-							<div className="post-body">
-								<div className="post-meta">
-									<a className="post-category cat-1" href="category.html">Web Design</a>
-									<span className="post-date">March 27, 2018</span>
-								</div>
-								<h3 className="post-title"><a href="blog-post.html">Pagedraw UI Builder Turns Your Website Design Mockup Into Code Automatically</a></h3>
-							</div>
-						</div>
-					</div>
-
-					<div className="col-md-4">
-						<div className="post">
-							<a className="post-img" href="blog-post.html"><img src={post4} alt="" /></a>
-							<div className="post-body">
-								<div className="post-meta">
-									<a className="post-category cat-2" href="category.html">JavaScript</a>
-									<span className="post-date">March 27, 2018</span>
-								</div>
-								<h3 className="post-title"><a href="blog-post.html">Chrome Extension Protects Against JavaScript-Based CPU Side-Channel Attacks</a></h3>
-							</div>
-						</div>
-					</div>
-
-					<div className="col-md-4">
-						<div className="post">
-							<a className="post-img" href="blog-post.html"><img src={post5} alt="" /></a>
-							<div className="post-body">
-								<div className="post-meta">
-									<a className="post-category cat-3" href="category.html">Jquery</a>
-									<span className="post-date">March 27, 2018</span>
-								</div>
-								<h3 className="post-title"><a href="blog-post.html">Ask HN: Does Anybody Still Use JQuery?</a></h3>
-							</div>
-						</div>
-					</div>
+                    {  (data) ?  
+                        data.map(article =>{
+                            return (
+                            <div className="col-md-4">
+                                <div className="post">
+                                    <Link className="post-img" to="/blog"><img src={post3} alt="" /></Link>
+                                    <div className="post-body">
+                                        <div className="post-meta">
+                                            <Link className="post-category cat-1" to="/blog">{article.category}</Link>
+                                            <span className="post-date">{article.createdAt}</span>
+                                        </div>
+                                        <h3 className="post-title"><Link to="/blog">{article.title}</Link></h3>
+                                    </div>
+                                </div>
+                            </div>
+                            );
+                        })
+                    : 'not yet loaded'}
 
 					<div className="clearfix visible-md visible-lg"></div>
 
@@ -334,9 +325,20 @@ class Recents extends React.Component {
 			</div>
 			{/* <!-- /container --> */}
 		</div>
-            </React.Fragment>
+        </React.Fragment>
         );
     }
 }
 
-export default Recents;
+
+function mapStateToProps(state) {
+    return {
+        article: state
+    }
+};
+
+const mapDispatchToProps = dispatch => ({
+    articles: () => dispatch(articles())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Recents);

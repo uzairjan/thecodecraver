@@ -19,6 +19,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use((req, res, next) => {
+  //res.setHeader('Access-Control-Allow-Origin', 'https://testing.geekboots.com');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,x-access-token,authorization');
+
+  console.log(`${new Date().toString()} => ${req.originalUrl}`);
+  next();
+});
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
