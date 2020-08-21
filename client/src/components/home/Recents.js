@@ -1,21 +1,22 @@
 import React from 'react';
 
-import Blog from './Blog';
+import Blog from './../Blog';
 
-import post1 from './../img/post-1.jpg';
-import post2 from './../img/post-2.jpg';
-import post3 from './../img/post-3.jpg';
-import post4 from './../img/post-4.jpg';
-import post5 from './../img/post-5.jpg';
-import post6 from './../img/post-6.jpg';
+import post1 from './../../img/post-1.jpg';
+import post2 from './../../img/post-2.jpg';
+import post3 from './../../img/post-3.jpg';
+import post4 from './../../img/post-4.jpg';
+import post5 from './../../img/post-5.jpg';
+import post6 from './../../img/post-6.jpg';
 import { Link } from 'react-router-dom';
-import widget1 from './../img/widget-1.jpg';
-import widget2 from './../img/widget-2.jpg';
-import widget3 from './../img/widget-3.jpg';
-import widget4 from './../img/widget-4.jpg';
+import widget1 from './../../img/widget-1.jpg';
+import widget2 from './../../img/widget-2.jpg';
+import widget3 from './../../img/widget-3.jpg';
+import widget4 from './../../img/widget-4.jpg';
 
 import { connect } from 'react-redux';
-import { articles } from './../actions/index';
+import { articles } from './../../actions/index';
+import Article from './partials/article';
 
 class Recents extends React.Component {
 
@@ -27,7 +28,7 @@ class Recents extends React.Component {
     render() {
         const { data } = this.props.article;
         console.log("my data",data);
-        if(!data) return <div>Loading....</div>
+  
         return (
             <React.Fragment>
         <div className="section">
@@ -71,24 +72,7 @@ class Recents extends React.Component {
 							<h2>Recent Posts</h2>
 						</div>
 					</div>
-                    {  (data) ?  
-                        data.map(article =>{
-                            return (
-                            <div className="col-md-4">
-                                <div className="post">
-                                    <Link className="post-img" to="/blog"><img src={post3} alt="" /></Link>
-                                    <div className="post-body">
-                                        <div className="post-meta">
-                                            <Link className="post-category cat-1" to="/blog">{article.category}</Link>
-                                            <span className="post-date">{article.createdAt}</span>
-                                        </div>
-                                        <h3 className="post-title"><Link to="/blog">{article.title}</Link></h3>
-                                    </div>
-                                </div>
-                            </div>
-                            );
-                        })
-                    : 'not yet loaded'}
+					<Article articles={data} />
 
 					<div className="clearfix visible-md visible-lg"></div>
 

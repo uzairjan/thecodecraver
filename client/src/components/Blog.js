@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './Header';
+import {connect} from 'react-redux';
 
 import post1 from './../img/post-1.jpg';
 import post2 from './../img/post-2.jpg';
@@ -336,4 +337,10 @@ class Blog extends React.Component {
     }
 }
 
-export default Blog;
+const mapStateToProps = state => {
+	return {
+		single: state.article
+	}
+}
+
+export default connect(mapStateToProps)(Blog);

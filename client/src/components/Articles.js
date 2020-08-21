@@ -2,7 +2,7 @@ import React from "react";
 
 import Header from "./Header";
 import Footer from "./Footer";
-import Recents from "./Recents";
+import Recents from "./home/Recents";
 import Featured from "./Featured";
 import Mostvisited from "./Mostvisited";
 
