@@ -11,9 +11,9 @@ class Article extends React.Component{
         return(
             <React.Fragment>
                 {  (data) ?  
-                        data.map(article =>{
+                        data.map((article,index )=>{
                             return (
-                            <div className="col-md-4">
+                            <div key={index} className="col-md-4">
                                 <div className="post">
                                     <Link className="post-img" to="/blog"><img src={post3} alt="" /></Link>
                                     <div className="post-body">

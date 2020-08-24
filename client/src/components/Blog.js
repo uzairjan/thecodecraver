@@ -19,7 +19,11 @@ import avatar from './../img/avatar.png';
 import postPage from './../img/post-page.jpg';
 
 class Blog extends React.Component {
+	constructor(props){
+		super(props);
+	}
     render(){
+		console.log(this.props.single);
         return(
             <React.Fragment>
                 <Header />
@@ -343,4 +347,5 @@ const mapStateToProps = state => {
 	}
 }
 
-export default connect(mapStateToProps)(Blog);
+
+export default connect(mapStateToProps,null)(Blog);

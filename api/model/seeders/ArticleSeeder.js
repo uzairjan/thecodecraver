@@ -5,7 +5,7 @@ var faker = require('faker');
 var article = [
     new Article(
         {
-            title: faker.lorem.words(),
+            title: "Variables and Mutability in Rust",
             user_id : '1212121212',
             body : faker.lorem.paragraphs(),
             category: faker.lorem.word(),
