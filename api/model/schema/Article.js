@@ -8,6 +8,7 @@ const ArticleSchema = new Schema({
         trim: true,
         maxlength: [150, 'title must be less 150 chars']
     },
+    img:{type:String, default:null},
     user_id : {type: String, required: true},
     body : {type: String},
     category: {type: String, maxlength:[40, 'category name must less than 40 characters']},
