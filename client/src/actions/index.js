@@ -21,6 +21,17 @@ export const  articles = () =>
 }
 
 
+export const article = (id) => dispatch => {
+  axios.get('users/article',{
+    params:{
+      id: id
+    }
+  })
+    .then( res => {
+      console.log('single article:',res);
+    })
+}
+
 export const getArticles = (data) => {
   return {
     type: GET_ARTICLES,

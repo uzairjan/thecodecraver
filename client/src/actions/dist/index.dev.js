@@ -1,0 +1,56 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getArticles = exports.article = exports.articles = exports.getArticle = void 0;
+
+var _types = require("./types");
+
+var _axios = _interopRequireDefault(require("axios"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+// Set logged in user
+var getArticle = function getArticle() {
+  var action = {
+    type: _types.GET_ARTICLE
+  };
+  return action;
+};
+
+exports.getArticle = getArticle;
+
+var articles = function articles() {
+  return function (dispatch) {
+    _axios["default"].get('users/articles').then(function (res) {
+      console.log(res);
+      dispatch(getArticles(res.data));
+    });
+  };
+};
+
+exports.articles = articles;
+
+var article = function article(id) {
+  return function (dispatch) {
+    _axios["default"].get('users/article', {
+      params: {
+        id: id
+      }
+    }).then(function (res) {
+      console.log('single article:', res);
+    });
+  };
+};
+
+exports.article = article;
+
+var getArticles = function getArticles(data) {
+  return {
+    type: _types.GET_ARTICLES,
+    payload: data
+  };
+};
+
+exports.getArticles = getArticles;

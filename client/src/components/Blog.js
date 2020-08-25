@@ -17,26 +17,34 @@ import widget4 from './../img/widget-4.jpg';
 import author from './../img/author.png';
 import avatar from './../img/avatar.png';
 import postPage from './../img/post-page.jpg';
+import { getArticle } from "./../actions/index";
 
 class Blog extends React.Component {
 	constructor(props){
 		super(props);
+		
+		const { data } = this.props.article;
+		console.log("my data",this.props);
+	}
+	componentDidMount(){
+		const { id } = this.props.match.params;
+
 	}
     render(){
-		console.log(this.props.single);
+		// console.log("single: ",this.props.single);
         return(
             <React.Fragment>
                 <Header />
-				<div id="post-header" className="page-header">
-				<div className="background-img" style={{backgroundImage: `url(${postPage})` }}></div>
+				<div id="post-header" className="page-header" >
+				{/* <div className="background-img" style={{backgroundImage: `url(${postPage})` }}></div> */}
 				<div className="container">
 					<div className="row">
-						<div className="col-md-10">
+						<div className="col-md-10" >
 							<div className="post-meta">
 								<a className="post-category cat-2" href="category.html">JavaScript</a>
-								<span className="post-date">March 27, 2018</span>
+								<span className="post-date" style={{color:'black'}}>March 27, 2018</span>
 							</div>
-							<h1>Ask HN: Does Anybody Still Use JQuery?</h1>
+							<h1 style={{color:'black'}}>Ask HN: Does Anybody Still Use JQuery?</h1>
 						</div>
 					</div>
 				</div>
@@ -341,11 +349,10 @@ class Blog extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
-	return {
-		single: state.article
-	}
-}
-
+function mapStateToProps(state) {
+    return {
+        article: state
+    }
+};
 
 export default connect(mapStateToProps,null)(Blog);
