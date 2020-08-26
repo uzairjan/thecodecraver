@@ -5,7 +5,7 @@ const initialState = {}
 export default function(state = initialState, action) {
     switch (action.type) {
         case GET_ARTICLE:
-            let data = { uzair: "hello world" };
+            let data = action.payload;
             return data;
         case GET_ARTICLES:
               return  action.payload

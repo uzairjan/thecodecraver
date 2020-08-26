@@ -12,9 +12,10 @@ var _axios = _interopRequireDefault(require("axios"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 // Set logged in user
-var getArticle = function getArticle() {
+var getArticle = function getArticle(data) {
   var action = {
-    type: _types.GET_ARTICLE
+    type: _types.GET_ARTICLE,
+    payload: data
   };
   return action;
 };
@@ -34,11 +35,8 @@ exports.articles = articles;
 
 var article = function article(id) {
   return function (dispatch) {
-    _axios["default"].get('users/article', {
-      params: {
-        id: id
-      }
-    }).then(function (res) {
+    _axios["default"].get('http://localhost:8000/users/article/' + id).then(function (res) {
+      dispatch(getArticle(res.data));
       console.log('single article:', res);
     });
   };

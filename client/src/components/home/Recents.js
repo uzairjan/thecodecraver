@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Blog from './../Blog';
 
 import post1 from './../../img/post-1.jpg';
 import post2 from './../../img/post-2.jpg';
@@ -21,13 +20,13 @@ import Article from './partials/article';
 class Recents extends React.Component {
 
     componentDidMount() {
-        const { articles } = this.props;
-        articles();
+        const { allArticles } = this.props;
+        allArticles();
     }
 
     render() {
         const { data } = this.props.article;
-        console.log("my data",data);
+        // console.log("my data",data);
   
         return (
             <React.Fragment>
@@ -322,7 +321,7 @@ function mapStateToProps(state) {
 };
 
 const mapDispatchToProps = dispatch => ({
-    articles: () => dispatch(articles())
+    allArticles: () => dispatch(articles())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Recents);
