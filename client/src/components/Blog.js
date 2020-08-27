@@ -64,7 +64,8 @@ class Blog extends React.Component {
 						<div className="section-row sticky-container">
 						<div className="main-post">
 							<h3>{data[0].title}</h3>
-								<p>{data[0].body} </p>
+							<div dangerouslySetInnerHTML={{ __html: data[0].body }} />
+								{/* <p>{} </p> */}
 							</div>
 							<div className="post-shares sticky-shares">
 								<a href="#" className="share-facebook"><i className="fa fa-facebook"></i></a>

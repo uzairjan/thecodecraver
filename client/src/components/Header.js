@@ -9,7 +9,7 @@ class Header extends React.Component{
                  <header id="header">
       <div id="nav">
 				<div id="nav-fixed">
-					<div className="container">
+					<div className="container-fluid">
 						<div className="nav-logo">
 							<a href="index.html" className="logo"><img src={logo} alt="" /></a>
 						</div>
@@ -21,8 +21,9 @@ class Header extends React.Component{
 							<li className="cat-2"><a href="category.html">JavaScript</a></li>
 							<li className="cat-3"><a href="category.html">Css</a></li>
 							<li className="cat-4"><a href="category.html">Jquery</a></li>
+							<li><a href='/hello wor.html'>Write an Article</a></li>
 						</ul>
-
+						
 						<div className="nav-btns">
 							<button className="aside-btn"><i className="fa fa-bars"></i></button>
 							<button className="search-btn"><i className="fa fa-search"></i></button>
