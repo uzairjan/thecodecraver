@@ -10,4 +10,7 @@ var ArticleController = require('./../controllers/user/ArticleController');
 
 router.get('/articles', ArticleController.getArticles);
 router.get('/article/:id', ArticleController.getArticle);
+router.get('/jwt', function (req, res) {
+  res.send('hello wolrd');
+});
 module.exports = router;
